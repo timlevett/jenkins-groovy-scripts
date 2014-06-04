@@ -6,7 +6,7 @@ def str_view = "my-predev4"
 def str_search = "my-predev4"
 def str_replace = "my-predev"
 def list_migrated = [];
-def bool_dryRun = false;
+def bool_dryRun = true;
 
 def view = Hudson.instance.getView(str_view)
  
@@ -15,10 +15,10 @@ for(item in view.getItems())
 {
 
   def already_migrated = false;
-  for(migrated in list_migrated) {
+  for(def migrated in list_migrated) {
    if(migrated.equals(item.getName())) {
      already_migrated = true;
-     println("Ran into duplicate entry, skipping " + migrated);
+     println("WARN: Ran into duplicate entry, skipping " + migrated);
      break;
    }
   }
@@ -51,6 +51,6 @@ for(item in view.getItems())
   }
   
   println(" $item.name copied as $newName")
-  migrated.add(item.getName());
+  list_migrated.add(item.getName());
 
 }

@@ -14,7 +14,7 @@ pipeline {
       }
       steps {
         script {
-          env.TAG = sh"`git describe --all --exact-match 2>/dev/null | sed 's=.*/=='`"
+          env.TAG = sh"echo `git describe --all --exact-match 2>/dev/null | sed 's=.*/=='`"
         }
         echo "${env.TAG}"
       }

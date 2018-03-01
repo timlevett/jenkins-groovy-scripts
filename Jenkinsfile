@@ -22,7 +22,7 @@ pipeline {
   }
   post {
     always {
-      echo "always"
+      echo "ugh awlays"
     }
   }
   options {
